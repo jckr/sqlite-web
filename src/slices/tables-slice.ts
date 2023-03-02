@@ -48,7 +48,7 @@ const tablesSlice = createSlice({
   },
 });
 
-export const TablesReducer = tablesSlice.reducer;
+export const tablesReducer = tablesSlice.reducer;
 export const selectTablesState = (state: AppState) => state.tables;
 export const {setTables, updateTable, updateTables} = tablesSlice.actions;
 
