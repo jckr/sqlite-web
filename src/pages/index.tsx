@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import initSqlJs from "sql.js";
 import { Database, QueryExecResult } from "sql.js";
-import styles from "../styles/Home.module.css";
+import styles from "@/styles/Home.module.css";
 
-import FileInput from "../components/file-input";
-import Results from "../components/sql-results";
-import QueryForm from "../components/sql-query-form";
+import FileInput from "@/components/file-input";
+import Results from "@/components/sql-results";
+import QueryForm from "@/components/sql-query-form";
 
 export default function SqlJsPage() {
   const [db, setDb] = useState<Database | null>(null);

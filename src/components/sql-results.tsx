@@ -1,5 +1,5 @@
 import { SqlValue } from "sql.js";
-import styles from "../styles/Home.module.css";
+import styles from "@/styles/Home.module.css";
 
 type ExecResult = {
   columns: string[];
