@@ -1,0 +1,38 @@
+
+.editor {
+  padding: 12px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.codeBox {
+  padding: 1rem;
+  width: calc(100% - 2rem);
+  height: 100%;
+  position: relative;  
+}
+
+.codeBox pre, .codeBox textarea {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.codeBox pre {
+  pointer-events: none;
+}
+
+.codeBox textArea {
+  color: transparent;
+  background: transparent;
+  caret-color: var(--gray20);
+}
+
+.codeBox textArea::selection {
+  background: var(--gray20);
+}

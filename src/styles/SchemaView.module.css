@@ -28,7 +28,6 @@
 
 h2.table-name {
   overflow-wrap: anywhere;
-  font-family: var(--font-mono);
   text-indent: -1em;
   padding-left: 1em;
 }
@@ -64,7 +63,6 @@ h2.table-name {
 
 .name, .table-link {
   font-weight: bold;
-  font-family: var(--font-mono);
   margin-right: 0.5em;
   line-height: 1.5em;
   overflow-wrap: anywhere;
@@ -85,7 +83,6 @@ h2.table-name {
   font-size: 0.6em;
   max-height: 1.1em;
   color: var(--null);
-  font-family: var(--font-mono);
   border: 1px solid currentcolor;
   border-radius: 0.25em;
   padding: 0.25em;
