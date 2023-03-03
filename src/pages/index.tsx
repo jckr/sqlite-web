@@ -79,7 +79,7 @@ export default function SqlJsPage() {
                       getTablesMetaData(db, dispatchSetTables);
                     }
                   };
-                  fileReader.readAsArrayBuffer(file);
+                  fileReader.readAsArrayBuffer(file as Blob);
                 }}
               />
               <QueryForm
