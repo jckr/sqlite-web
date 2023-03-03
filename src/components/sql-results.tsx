@@ -7,7 +7,7 @@ type ExecResult = {
 };
 
 type ResultTableProps = {
-  results: Array<ExecResult>;
+  results: Array<ExecResult> | null;
   error: string | null;
 };
 

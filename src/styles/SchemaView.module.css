@@ -1,0 +1,112 @@
+.schema-view {
+  background: var(--light-gray);
+  min-width: 200px;
+  width: 200px;
+  height: 100%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header label, .header .back {
+  font-weight: 500;
+  color: var(--dark-gray);
+}
+
+.header .back {
+  display: inline-block;
+  padding: 0.25em;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.header .back:hover {
+  background: var(--background);
+}
+
+
+
+h2.table-name {
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono);
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+.content {
+  overflow: auto;
+  margin: 0.5em 0;
+  border: 1px solid var(--gray);
+}
+
+.fields-list,
+.tables-list {
+  background: var(--background);
+  border: none;
+  width: 100%;
+}
+
+.fields-list tr,
+.tables-list tr {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0.25em 1em;
+  border-bottom: 1px solid var(--light-gray);
+  align-items: center;
+}
+
+.fields-list tr:last-child,
+.tables-list tr:last-child {
+  border-bottom: none;
+}
+
+.name, .table-link {
+  font-weight: bold;
+  font-family: var(--font-mono);
+  margin-right: 0.5em;
+  line-height: 1.5em;
+  overflow-wrap: anywhere;
+  text-indent: -0.5em;
+  padding-left: 0.5em;
+}
+
+.table-link {
+  cursor: pointer;
+}
+
+.table-link:hover {
+  text-decoration: underline;
+}
+
+
+.type {
+  font-size: 0.6em;
+  max-height: 1.1em;
+  color: var(--null);
+  font-family: var(--font-mono);
+  border: 1px solid currentcolor;
+  border-radius: 0.25em;
+  padding: 0.25em;
+  background: var(--null-light);
+}
+
+.type[data-type='INTEGER'] {
+  color: var(--integer);
+  background: var(--integer-light);
+}
+
+.type[data-type='TEXT'] {
+  color: var(--text);
+  background: var(--text-light);
+}
+
+.type[data-type='REAL'] {
+  color: var(--real);
+  background: var(--real-light);
+}
+.type[data-type='BLOB'] {
+  color: var(--blob);
+  background: var(--blob-light);
+}
