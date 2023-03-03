@@ -30,20 +30,27 @@ function TableView({
     return <div>Table not found</div>;
   }
   return (
-    <><header className={styles.header}>
-      <div className={styles.back} onClick={() => selectTable('')}>Back to table list</div>
-      <h2 className={styles['table-name']}>{table}</h2>
-      <label>Fields:</label>
+    <>
+      <header className={styles.header}>
+        <div className={styles.back} onClick={() => selectTable('')}>
+          Back to table list
+        </div>
+        <h2 className={styles['table-name']}>{table}</h2>
+        <label>Fields:</label>
       </header>
       <div className={styles.content}>
-      <table className={styles['fields-list']}>
-        {selectedTable.fields?.map((field) => (
-          <tr key={field.name}>
-            <div className={styles.name}>{field.name}</div>
-            {field.type && <div className={styles.type} data-type={field.type} >{field.type}</div>}
-          </tr>
-        ))}
-      </table>
+        <div className={styles['fields-list']}>
+          {selectedTable.fields?.map((field) => (
+            <div key={field.name} className={styles.row}>
+              <div className={styles.name}>{field.name}</div>
+              {field.type && (
+                <div className={styles.type} data-type={getTypeForDataAttribute(field.type)}>
+                  {field.type}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
@@ -52,22 +59,24 @@ function TableView({
 function TableList({ selectTable }: { selectTable: (table: string) => void }) {
   const tables = useAppSelector((state) => state.tables.tables);
   return (
-    <><header className={styles.header}>
-      <label>List of tables</label>
+    <>
+      <header className={styles.header}>
+        <label>List of tables</label>
       </header>
       <div className={styles.content}>
-      {tables.length === 0 && <EmptyTableList />}
-      <table className={styles['tables-list']}>
-        {tables.map((table) => (
-          <tr 
-            className={styles['table-link']}
-            key={table.name} onClick={() => selectTable(table.name)}>
-            
-              {table.name}
-            
-          </tr>
-        ))}
-      </table>
+        {tables.length === 0 && <EmptyTableList />}
+        <div className={styles['tables-list']}>
+          {tables.map((table) => (
+            <div key={table.name} className={styles.row}>
+              <div
+                className={styles['table-link']}
+                onClick={() => selectTable(table.name)}
+              >
+                {table.name}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <div>Click on a table for a list of fields</div>
     </>
@@ -76,4 +85,21 @@ function TableList({ selectTable }: { selectTable: (table: string) => void }) {
 
 function EmptyTableList() {
   return <div>No tables found</div>;
+}
+
+function getTypeForDataAttribute(type: string) {
+  if (type.length === 0) return null;
+  const allCapsType = type.toUpperCase();
+  if (allCapsType === 'INTEGER' || allCapsType === 'REAL' || allCapsType === 'TEXT' || allCapsType === 'BLOB' || allCapsType === 'NULL') return type;
+  if (allCapsType.includes('CHAR')) return 'TEXT';
+  if (allCapsType === 'CLOB') return 'TEXT';
+  if (allCapsType.includes('INT')) return 'INTEGER';
+  if (allCapsType.includes('DOUBLE')) return 'REAL';
+  if (allCapsType === 'FLOAT') return 'REAL';
+  // todo - create a new set of styles for these
+  if (allCapsType === 'NUMERIC') return 'REAL';
+  if (allCapsType.startsWith('DECIMAL')) return 'REAL';
+  if (allCapsType === 'BOOLEAN') return 'REAL';
+  if (allCapsType.includes('DATE')) return 'TEXT';
+  return 'UNKNOWN';
 }
