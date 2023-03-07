@@ -71,6 +71,5 @@ tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 div > pre code.hljs {
-  padding: 0;
   height: 100%;
 }
