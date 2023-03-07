@@ -41,7 +41,7 @@
 }
 
 .codeBox pre code.hljs {
-  padding: 0;
+  /* padding: 0; */
 }
 
 .codeBox textarea.double {
@@ -56,10 +56,10 @@
 .codeBox textArea.input {
   color: transparent;
   background: transparent;
-  caret-color: var(--gray20);
+  caret-color: var(--text-color);
 }
 
 .codeBox textArea.input::selection {
-  background: var(--gray20);
-  color: var(--gray140);
+  background: var(--text-color);
+  color: var(--editor-background);
 }
