@@ -1,7 +1,6 @@
 import styles from '@/styles/Editor.module.css';
 
 import { format } from 'sql-formatter';
-import 'highlight.js/styles/github.css';
 import hljs from 'highlight.js/lib/core';
 import { withFiraCode } from '@/utils/fonts';
 import sql from 'highlight.js/lib/languages/sql';
@@ -19,12 +18,13 @@ export default function QueryForm({ exec, query, setQuery }: QueryFormProps) {
     hljs.highlightAll();
   });
   return (
-    <section className={styles.section}>
+    <div className={styles['editor']}>
       <div className={withFiraCode(styles.codeBox)}>
-      <pre>
+        <pre>
           <code className='language-sql'>{query}</code>
         </pre>
         <textarea
+        className={styles['input']}
           id='query-box'
           value={query}
           onChange={(e) => {
@@ -32,7 +32,6 @@ export default function QueryForm({ exec, query, setQuery }: QueryFormProps) {
           }}
           placeholder='Enter some SQL. No inspiration ? Try "select sqlite_version()"'
         />
-        
       </div>
       <div className={styles['button-row']}>
         <button
@@ -48,8 +47,8 @@ export default function QueryForm({ exec, query, setQuery }: QueryFormProps) {
         >
           Format query
         </button>
-        <button type='submit'>Execute query</button>
+        <button type='submit' onClick={(e) => exec(query)}>Execute query</button>
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 :root {  
-  --background: #fff;
-  --text-color: #1f2937;
+  
   --dark-gray: rgb(35,34,39);
   --gray: #6b7280;
   --light-gray: #f5f5f5;
@@ -23,6 +22,10 @@
   --blob-light: hsla(15, 31%, 45%, .5);
   --text-light: hsla(200, 40%, 43%, .5);
   --null-light: hsla(215, 13%, 34%, .5);
+
+  --background: var(--gray20);
+  --text-color: var(--gray140);
+  --editor-background: var(--gray40);
 }
 html,
 body {
@@ -66,4 +69,8 @@ tbody tr:nth-child(odd) {
 }
 tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
+}
+div > pre code.hljs {
+  padding: 0;
+  height: 100%;
 }

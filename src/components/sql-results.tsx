@@ -13,7 +13,7 @@ type ResultTableProps = {
 
 export default function Results({ error, results }: ResultTableProps) {
   return (
-    <section className={styles.section}>
+    <div className={styles.results}>
       <label>Results: </label>
       <pre className={styles.error}>{(error || "").toString()}</pre>
       <pre>
@@ -43,6 +43,6 @@ export default function Results({ error, results }: ResultTableProps) {
           </table>
         ))}
       </pre>
-    </section>
+    </div>
   );
 }

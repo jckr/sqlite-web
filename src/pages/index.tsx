@@ -83,13 +83,11 @@ export default function SqlJsPage() {
             }}
           />
           <div className={styles.top}>
-            <div className={styles.editor}>
-              <QueryForm
-                query={query}
-                setQuery={setQuery}
-                exec={(query) => exec(query, db)}
-              />
-            </div>
+            <QueryForm
+              query={query}
+              setQuery={setQuery}
+              exec={(query) => exec(query, db)}
+            />
             <SchemaView />
           </div>
           <Results error={error} results={execResults} />
