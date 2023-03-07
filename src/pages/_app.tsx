@@ -1,7 +1,10 @@
 import '@/styles/globals.css'
+import '@/styles/highlight.css';
+
 import { Provider } from "react-redux";
 import type { AppProps } from 'next/app'
 import wrapper from '@/slices/store'
+
 
 export default function App({ Component, ...rest }: AppProps) {
   const {store, props} = wrapper.useWrappedStore(rest);

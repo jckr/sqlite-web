@@ -1,6 +1,7 @@
 import styles from '@/styles/SchemaView.module.css';
 import { useAppSelector } from '@/slices/hook';
 import { useState } from 'react';
+import { withFiraCode } from '@/utils/fonts';
 
 export default function SchemaView() {
   const tables = useAppSelector((state) => state.tables.tables);
@@ -35,16 +36,16 @@ function TableView({
         <div className={styles.back} onClick={() => selectTable('')}>
           Back to table list
         </div>
-        <h2 className={styles['table-name']}>{table}</h2>
+        <h2 className={withFiraCode(styles['table-name'])}>{table}</h2>
         <label>Fields:</label>
       </header>
       <div className={styles.content}>
         <div className={styles['fields-list']}>
           {selectedTable.fields?.map((field) => (
             <div key={field.name} className={styles.row}>
-              <div className={styles.name}>{field.name}</div>
+              <div className={withFiraCode(styles.name)}>{field.name}</div>
               {field.type && (
-                <div className={styles.type} data-type={getTypeForDataAttribute(field.type)}>
+                <div className={withFiraCode(styles.type)} data-type={getTypeForDataAttribute(field.type)}>
                   {field.type}
                 </div>
               )}
@@ -69,7 +70,7 @@ function TableList({ selectTable }: { selectTable: (table: string) => void }) {
           {tables.map((table) => (
             <div key={table.name} className={styles.row}>
               <div
-                className={styles['table-link']}
+                className={withFiraCode(styles['table-link'])}
                 onClick={() => selectTable(table.name)}
               >
                 {table.name}

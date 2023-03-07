@@ -3,12 +3,15 @@ import initSqlJs from 'sql.js';
 import { Database, QueryExecResult } from 'sql.js';
 import styles from '@/styles/Home.module.css';
 
-import FileInput from '@/components/file-input';
 import Results from '@/components/sql-results';
 import QueryForm from '@/components/sql-query-form';
 import { useAppSelector, useAppDispatch } from '@/slices/hook';
 import { Table, setTables } from '@/slices/tables-slice';
 import SchemaView from '@/components/schema-view';
+import TitleBar from '@/components/title-bar';
+
+import { withOpenSans } from '@/utils/fonts';
+
 
 export default function SqlJsPage() {
   const [db, setDb] = useState<Database | null>(null);
@@ -56,38 +59,35 @@ export default function SqlJsPage() {
    */
 
   return (
-    <div className={styles.container}>
+    <div className={withOpenSans(styles.container)}>
       {db ? (
         <>
+          <TitleBar
+            handleFile={(file: File) => {
+              if (!sql) {
+                return;
+              }
+              const fileReader = new FileReader();
+              fileReader.onload = () => {
+                if (
+                  typeof fileReader.result !== 'string' &&
+                  fileReader.result !== null
+                ) {
+                  const typedArray = new Uint8Array(fileReader.result);
+                  const db = new sql.Database(typedArray);
+                  setDb(db);
+                  getTablesMetaData(db, dispatchSetTables);
+                }
+              };
+              fileReader.readAsArrayBuffer(file as Blob);
+            }}
+          />
           <div className={styles.top}>
-            <div className={styles.editor}>
-              <h1>Next.js with SQL.js example</h1>
-              <FileInput
-                handleFile={(file: File) => {
-                  if (!sql) {
-                    return;
-                  }
-                  const fileReader = new FileReader();
-                  fileReader.onload = () => {
-                    if (
-                      typeof fileReader.result !== 'string' &&
-                      fileReader.result !== null
-                    ) {
-                      const typedArray = new Uint8Array(fileReader.result);
-                      const db = new sql.Database(typedArray);
-                      setDb(db);
-                      getTablesMetaData(db, dispatchSetTables);
-                    }
-                  };
-                  fileReader.readAsArrayBuffer(file as Blob);
-                }}
-              />
-              <QueryForm
-                query={query}
-                setQuery={setQuery}
-                exec={(query) => exec(query, db)}
-              />
-            </div>
+            <QueryForm
+              query={query}
+              setQuery={setQuery}
+              exec={(query) => exec(query, db)}
+            />
             <SchemaView />
           </div>
           <Results error={error} results={execResults} />
