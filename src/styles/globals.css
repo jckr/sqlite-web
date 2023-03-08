@@ -8,9 +8,10 @@
   --gray40: rgb(45,45,58);
   --gray60: rgb(85,85,97);
   --gray80: rgb(91,91,102);
-  --gray100: rgb(107,107,117);
-  --gray120: rgb(227,227,230);
-  --gray140: rgb(243,243,244);
+  --gray100: rgb(107,107,109);
+  --gray120: rgb(202,202,204);
+  --gray140: rgb(227,227,230);
+  --gray160: rgb(243,243,244);
 
   --integer: hsl(99, 18%, 40%);
   --real: hsl(300, 15%, 46%);
@@ -24,8 +25,16 @@
   --null-light: hsla(215, 13%, 34%, .5);
 
   --background: var(--gray20);
-  --text-color: var(--gray140);
+  --text-color: var(--gray160);
+
   --editor-background: var(--gray40);
+  --schema-background: var(--gray160);
+  --schema-text-color: var(--gray40);
+  --schema-text-color-accent: var(--gray60);
+  --schema-borders-outer: var(--gray120);
+  --schema-borders-inner: var(--gray140);
+
+
 }
 html,
 body {
@@ -34,7 +43,6 @@ body {
   color: var(--text-color);
   font-size: 12px;
 }
-
 
 table {
   border: 1px solid var(--gray);

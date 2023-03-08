@@ -1,5 +1,5 @@
 .schema-view {
-  background: var(--light-gray);
+  background: var(--schema-background);
   min-width: 200px;
   width: 200px;
   padding: 12px;
@@ -9,7 +9,7 @@
 
 .header label, .header .back {
   font-weight: 500;
-  color: var(--dark-gray);
+  color: var(--schema-text-color);
 }
 
 .header .back {
@@ -21,6 +21,7 @@
 
 .header .back:hover {
   background: var(--background);
+  color: var(--text-color);
 }
 
 
@@ -34,12 +35,11 @@ h2.table-name {
 .content {
   overflow: auto;
   margin: 0.5em 0;
-  border: 1px solid var(--gray);
+  border: 1px solid var(--schema-borders-outer);
 }
 
 .fields-list,
 .tables-list {
-  background: var(--background);
   border: none;
   width: 100%;
 }
@@ -51,7 +51,7 @@ h2.table-name {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0.25em 1em;
-  border-bottom: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--schema-borders-inner);
   align-items: center;
 }
 
