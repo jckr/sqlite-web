@@ -5,6 +5,7 @@
   padding: 12px;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 }
 
 .header label, .header .back {

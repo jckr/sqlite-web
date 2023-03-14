@@ -19,7 +19,8 @@
 
 .codeBox {
   flex-grow: 1;
-  position: relative;  
+  position: relative;
+  overflow: scroll;
 }
 
 .codeBox textArea {
@@ -38,10 +39,6 @@
   top: 0;
   padding: 0;
   margin: 0;
-}
-
-.codeBox pre code.hljs {
-  /* padding: 0; */
 }
 
 .codeBox textarea.double {
