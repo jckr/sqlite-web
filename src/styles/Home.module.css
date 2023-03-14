@@ -10,7 +10,8 @@
 .top {
   display: flex;
   flex-direction: row;
-  flex-grow: 3;
+  flex-grow: 1;
+  height: 60%;
 }
 
 .section {
@@ -19,12 +20,7 @@
   flex-direction: column;
 }
 
-.results {
-  flex-grow: 2;
-}
 
 
-.error {
-  display: block;
-  background-color: pink;
-}
+
+
