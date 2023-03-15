@@ -63,7 +63,7 @@ export default function SqlJsPage() {
       {db ? (
         <>
           <TitleBar
-            handleFile={(file: File) => {
+            loadFile={(file: File) => {
               if (!sql) {
                 return;
               }
@@ -80,6 +80,21 @@ export default function SqlJsPage() {
                 }
               };
               fileReader.readAsArrayBuffer(file as Blob);
+            }}
+            saveFile={() => {
+              if (!db || !window) return;
+              const binaryArray = db.export();
+              const blob = new Blob([binaryArray]);
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'sql.db';
+              a.onclick = () => {
+                setTimeout(() => {
+                  URL.revokeObjectURL(url);
+                }, 1500);
+              };
+              a.click();
             }}
           />
           <div className={styles.top}>
