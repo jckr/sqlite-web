@@ -1,15 +1,20 @@
 import styles from "@/styles/Title.module.css";
 import FileInput from './file-input';
+import ExportDB from './export-db';
 
 export type TitleBarProps = {
-  handleFile: (file: File) => void;
+  loadFile: (file: File) => void;
+  saveFile: () => void;
 }
 
-export default function TitleBar({handleFile}: TitleBarProps) {
+export default function TitleBar({loadFile, saveFile}: TitleBarProps) {
   return (
     <header className={styles.header}>
       <h1 className={styles.title}>SQLite Viewer</h1>
-      <FileInput handleFile={handleFile} />
+      <section className={styles.section}>
+      <FileInput loadFile={loadFile} />
+      <ExportDB saveFile={saveFile} />
+      </section>
     </header>
   );
 }

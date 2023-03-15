@@ -16,7 +16,7 @@ type QueryFormProps = {
 export default function QueryForm({ exec, query, setQuery }: QueryFormProps) {
   useEffect(() => {
     hljs.highlightAll();
-  });
+  }, [query]);
   return (
     <div className={styles['editor']}>
       <div className={withFiraCode(styles.codeBox)}>

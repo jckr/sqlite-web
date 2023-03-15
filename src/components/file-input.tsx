@@ -1,9 +1,8 @@
 import styles from '@/styles/Title.module.css';
-import { TitleBarProps } from './title-bar';
 
-export default function FileInput({ handleFile }: TitleBarProps) {
+export default function FileInput({ loadFile }: { loadFile: (file: File) => void }) {
   return (
-    <section className={styles.section}>
+    <>
       <label htmlFor='file-input'>Open</label>
       <input
         className={styles['hidden-input']}
@@ -11,10 +10,10 @@ export default function FileInput({ handleFile }: TitleBarProps) {
         id='file-input'
         onChange={(e) => {
           if (e.target.files?.length) {
-            handleFile(e.target.files[0]);
+            loadFile(e.target.files[0]);
           }
         }}
       />
-    </section>
+    </>
   );
 }
