@@ -1,8 +1,7 @@
-
 .editor {
   background: var(--editor-background);
-  padding: 1em;
- flex-grow: 1;
+  padding: 0.5rem;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
@@ -27,23 +26,26 @@
   resize: none;
   font-size: 1rem;
   outline-offset: -1px;
-  border: none;
-  border-radius:0;
 }
 
-.codeBox pre, .codeBox textarea {
-  padding: 1em;
+.codeBox textArea:focus {
+  outline: none;
+  border-color: var(--gray80);
+}
+.codeBox pre,
+.codeBox textarea {
+  border: 1px solid transparent;
+  padding: 0.5rem;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 1rem - 2px);
+  height: calc(100% - 1rem - 2px);
   top: 0;
-  padding: 0;
   margin: 0;
+  transition: border-color 0.5s;
 }
 
 .codeBox textarea.double {
   top: 100px;
-  
 }
 
 .codeBox pre {
