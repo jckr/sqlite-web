@@ -81,9 +81,32 @@ export default function SqlJsPage() {
               };
               fileReader.readAsArrayBuffer(file as Blob);
             }}
-            saveFile={() => {
+            saveFile={async () => {
               if (!db || !window) return;
               const binaryArray = db.export();
+              if ('showSaveFilePicker' in window) {
+                try {
+                // @ts-expect-error - showSaveFilePicker is not yet in the TS lib
+                const options: SaveFilePickerOptions = {
+                  suggestedName: 'filename',
+                  types: [
+                    {
+                      description: 'SQLite database file',
+                      accept: { 'application/x-sqlite3': ['.db'] },
+                    }
+                  ]
+                };
+                // Use the native file system API
+                // @ts-expect-error - showSaveFilePicker is not yet in the TS lib
+                const handle = await window.showSaveFilePicker(options);
+                const writable = await handle.createWritable();
+                await writable.write(binaryArray);
+                await writable.close();
+                } catch(err) {
+                  console.error(err);
+                }
+                return;
+              }
               const blob = new Blob([binaryArray]);
               const url = URL.createObjectURL(blob);
               const a = document.createElement('a');
