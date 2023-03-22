@@ -27,3 +27,5 @@ describe('App loads', () => {
     /* ==== End Cypress Studio ==== */
   });
 })
+
+export {};
